@@ -1,15 +1,13 @@
-import React from 'react';
+const React = require('react');
+import { Component } from 'react';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
+import CounterApp from './containers/counter-app';
+import * as counter from './reducers';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your TypeScript app!</Text>
-      </View>
-    );
-  }
-}
+const reducer = combineReducers(counter);
+const store = createStore(reducer);
 
 const styles = StyleSheet.create({
   container: {
@@ -19,3 +17,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default class App extends Component {
+  render() {
+    return (
+      <Provider store={store} >
+        <View style={styles.container}>
+          <Text>Open up App.js to start working on your TypeScript app!</Text>
+        </View>
+        <CounterApp />
+      </Provider>
+    );
+  }
+}
