@@ -1,32 +1,18 @@
 const React = require('react');
 import { Component } from 'react';
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { StyleSheet, Text, View } from 'react-native';
-import CounterApp from './containers/counter-app';
-import * as counter from './reducers';
+import reducer from './reducers';
+import App from './components/app';
 
-const reducer = combineReducers(counter);
 const store = createStore(reducer);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-export default class App extends Component {
+export default class Boule extends Component {
   render() {
     return (
       <Provider store={store} >
-        <View style={styles.container}>
-          <Text>Open up App.js to start working on your TypeScript app!</Text>
-        </View>
-        <CounterApp />
+        <App />
       </Provider>
     );
   }
-}
+};
