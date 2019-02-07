@@ -3,6 +3,7 @@ import { Component } from 'react'
 import { View, StyleSheet } from 'react-native';
 import ListContainer from '../containers/listContainer';
 import HeaderView from './headerView';
+import AddItemContainer from '../containers/addItemContainer';
 
 const style = StyleSheet.create({
   app: {
@@ -18,6 +19,7 @@ export default class App extends Component {
     return (
       <View style={style.app}>
         <HeaderView />
+        <AddItemContainer />
         <ListContainer />
       </View>
     )
