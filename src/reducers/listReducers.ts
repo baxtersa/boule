@@ -12,10 +12,16 @@ export function listReducer<T>(state: ListState<T> = initialState, action: ListA
   switch (action.type) {
     case ADD_ITEM:
       state.items.push(action.item);
-      return state;
+      return {
+        ...state,
+        items: state.items,
+      };
     case DELETE_ITEM:
-      state.items.splice(action.index);
-      return state;
+      state.items.splice(action.index, 1);
+      return {
+        ...state,
+        items: state.items,
+      }
     case TOGGLE_ITEM:
       return state;
     default:

@@ -1,16 +1,17 @@
 const React = require('react');
 import { Component } from "react";
 import { connect } from "react-redux";
-import { View, TextInput, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet, Button } from "react-native";
 import { addItem, AddItem } from "../actions";
 
 export interface Props {
-    onChangeText: (text: string) => AddItem<string>;
+    onAddItem: (text: string) => AddItem<string>;
 }
 
 export interface State {
     text: string;
 };
+const defaultState = { text: '' };
 
 const style = StyleSheet.create({
     addItem: {
@@ -21,27 +22,43 @@ const style = StyleSheet.create({
 });
 
 class AddItemView extends Component<Props, State> {
+    constructor(props: Props) {
+        super(props);
+        this.state = defaultState;
+    }
+
     render() {
-        console.log('AddItemView', this.state);
-        const { onChangeText } = this.props;
+        const { onAddItem } = this.props;
         const { text } = this.state;
         return (
             <View style={style.addItem}>
                 <TextInput
-                    onChangeText={onChangeText}
-                    value={text}
+                    onChangeText={text => this.setState({ text })}
+                />
+                <Button
+                    title={'Add'}
+                    onPress={event => {
+                        event.preventDefault();
+
+                        // don't add empty items to list
+                        if (!text.trim()) {
+                            return;
+                        }
+
+                        // dispatch an addItem action
+                        onAddItem(text);
+                        // reset the text entry to default
+                        this.setState(defaultState);
+                    }}
                 />
             </View>
         )
     }
 };
 
-const AddItemContainer = connect((state: { text: string }) => {
-    console.log('connecting:', state);
-    return state;
-},
+const AddItemContainer = connect(state => state,
     dispatch => ({
-        onChangeText: (text: string) => dispatch(addItem(text))
+        onAddItem: (text: string) => dispatch(addItem(text))
     }))(AddItemView)
 
 export default AddItemContainer;
