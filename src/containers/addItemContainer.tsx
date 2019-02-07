@@ -1,7 +1,8 @@
 const React = require('react');
 import { Component } from "react";
 import { connect } from "react-redux";
-import { View, TextInput, StyleSheet, Button } from "react-native";
+import { View, TextInput, StyleSheet } from "react-native";
+import { Button, Text } from 'native-base';
 import { addItem, AddItem } from "../actions";
 
 export interface Props {
@@ -36,7 +37,6 @@ class AddItemView extends Component<Props, State> {
                     onChangeText={text => this.setState({ text })}
                 />
                 <Button
-                    title={'Add'}
                     onPress={event => {
                         event.preventDefault();
 
@@ -49,8 +49,9 @@ class AddItemView extends Component<Props, State> {
                         onAddItem(text);
                         // reset the text entry to default
                         this.setState(defaultState);
-                    }}
-                />
+                    }}>
+                    <Text>Add</Text>
+                </Button >
             </View>
         )
     }
