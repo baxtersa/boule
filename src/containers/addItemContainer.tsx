@@ -1,8 +1,8 @@
 const React = require('react');
 import { Component } from "react";
 import { connect } from "react-redux";
-import { View, TextInput, StyleSheet } from "react-native";
-import { Button, Text } from 'native-base';
+import { TextInput, StyleSheet } from "react-native";
+import { Button, Text, Grid, Col } from 'native-base';
 import { addItem, AddItem } from "../actions";
 
 export interface Props {
@@ -19,6 +19,10 @@ const style = StyleSheet.create({
         flex: 1,
         backgroundColor: '#f00',
         width: '100%',
+    },
+    textInput: {
+        alignItems: 'center',
+        // justifyContent: 'center',
     }
 });
 
@@ -32,27 +36,32 @@ class AddItemView extends Component<Props, State> {
         const { onAddItem } = this.props;
         const { text } = this.state;
         return (
-            <View style={style.addItem}>
-                <TextInput
-                    onChangeText={text => this.setState({ text })}
-                />
-                <Button
-                    onPress={event => {
-                        event.preventDefault();
+            <Grid>
+                <Col>
+                    <TextInput
+                        style={style.textInput}
+                        onChangeText={text => this.setState({ text })}
+                    />
+                </Col>
+                <Col>
+                    <Button
+                        onPress={event => {
+                            event.preventDefault();
 
-                        // don't add empty items to list
-                        if (!text.trim()) {
-                            return;
-                        }
+                            // don't add empty items to list
+                            if (!text.trim()) {
+                                return;
+                            }
 
-                        // dispatch an addItem action
-                        onAddItem(text);
-                        // reset the text entry to default
-                        this.setState(defaultState);
-                    }}>
-                    <Text>Add</Text>
-                </Button >
-            </View>
+                            // dispatch an addItem action
+                            onAddItem(text);
+                            // reset the text entry to default
+                            this.setState(defaultState);
+                        }}>
+                        <Text>Add</Text>
+                    </Button >
+                </Col>
+            </Grid>
         )
     }
 };

@@ -1,28 +1,19 @@
 const React = require('react');
 import { Component } from 'react'
-import { StyleSheet, Text } from 'react-native';
+import { Text, ListItem } from 'native-base';
 
 interface Props {
-  onClick: () => void;
   text: string;
 };
 
-const style = StyleSheet.create({
-  listItem: {
-
-  }
-})
-
 export default class ListItemView extends Component<Props> {
   render() {
-    const { onClick, text } = this.props;
+    const { text } = this.props;
 
     return (
-      <Text
-        style={style.listItem}
-        onPress={onClick}>
-        {text}
-      </Text>
+      <ListItem>
+        <Text>{text}</Text>
+      </ListItem>
     )
   }
 };
