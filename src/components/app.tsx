@@ -1,29 +1,29 @@
 const React = require('react');
 import { Component } from 'react'
-import { StyleSheet } from 'react-native';
-import ListContainer from '../containers/listContainer';
-// import HeaderView from './headerView';
-import AddItemContainer from '../containers/addItemContainer';
-import { Container, Header, Content } from 'native-base';
+import { Container, Header, Content, Body, StyleProvider } from 'native-base';
 
-const style = StyleSheet.create({
-  app: {
-    flex: 1,
-    backgroundColor: '#fff',
-  }
-})
+import ListContainer from '../containers/listContainer';
+import AddItemContainer from '../containers/addItemContainer';
+import getTheme from '../../native-base-theme/components';
+import commonColor from '../../native-base-theme/variables/commonColor';
+import HeaderView from './headerView';
 
 export default class App extends Component {
   render() {
     return (
-      <Container style={style.app}>
-        <Header>
-          <AddItemContainer />
-        </Header>
-        <Content>
-          <ListContainer />
-        </Content>
-      </Container>
+      <StyleProvider style={getTheme(commonColor)}>
+        <Container>
+          <Header hasSegment>
+            <Body>
+              <HeaderView />
+            </Body>
+          </Header>
+          <Content padder scrollEnabled={false}>
+            <AddItemContainer />
+            <ListContainer />
+          </Content>
+        </Container>
+      </StyleProvider>
     )
   }
 }

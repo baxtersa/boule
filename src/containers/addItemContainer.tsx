@@ -2,11 +2,12 @@ const React = require('react');
 import { Component } from "react";
 import { connect } from "react-redux";
 import { TextInput, StyleSheet } from "react-native";
-import { Button, Text, Grid, Col } from 'native-base';
+import { Button, Text, View } from 'native-base';
 import { addItem, AddItem } from "../actions";
+import { BreadInfo } from "../types/breadInfo";
 
 export interface Props {
-    onAddItem: (text: string) => AddItem<string>;
+    onAddItem: (text: string) => AddItem<BreadInfo>;
 }
 
 export interface State {
@@ -16,13 +17,13 @@ const defaultState = { text: '' };
 
 const style = StyleSheet.create({
     addItem: {
-        flex: 1,
-        backgroundColor: '#f00',
-        width: '100%',
+        width: '90%',
+        alignSelf: 'center',
+        justifyContent: 'center',
     },
     textInput: {
-        alignItems: 'center',
-        // justifyContent: 'center',
+        padding: 10,
+        justifyContent: 'center',
     }
 });
 
@@ -36,39 +37,46 @@ class AddItemView extends Component<Props, State> {
         const { onAddItem } = this.props;
         const { text } = this.state;
         return (
-            <Grid>
-                <Col>
-                    <TextInput
-                        style={style.textInput}
-                        onChangeText={text => this.setState({ text })}
-                    />
-                </Col>
-                <Col>
-                    <Button
-                        onPress={event => {
-                            event.preventDefault();
+            <View style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }}>
+                <TextInput
+                    style={style.textInput}
+                    clearButtonMode={'while-editing'}
+                    clearTextOnFocus={true}
+                    onSubmitEditing={ev =>
+                        this.setState({ text: ev.nativeEvent.text })} />
+                <Button
+                    style={style.addItem}
+                    onPress={event => {
+                        event.preventDefault();
 
-                            // don't add empty items to list
-                            if (!text.trim()) {
-                                return;
-                            }
+                        // don't add empty items to list
+                        if (!text.trim()) {
+                            return;
+                        }
 
-                            // dispatch an addItem action
-                            onAddItem(text);
-                            // reset the text entry to default
-                            this.setState(defaultState);
-                        }}>
-                        <Text>Add</Text>
-                    </Button >
-                </Col>
-            </Grid>
+                        // dispatch an addItem action
+                        onAddItem(text);
+                        // reset the text entry to default
+                        this.setState(defaultState);
+                    }}>
+                    <Text>Add Item</Text>
+                </Button >
+            </View>
         )
     }
 };
 
 const AddItemContainer = connect(state => state,
     dispatch => ({
-        onAddItem: (text: string) => dispatch(addItem(text))
+        onAddItem: (text: string) => dispatch(addItem({
+            title: text,
+            date: Date.now(),
+        }))
     }))(AddItemView)
 
 export default AddItemContainer;

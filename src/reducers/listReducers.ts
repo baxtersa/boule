@@ -5,10 +5,16 @@ export interface ListState<T> {
 };
 
 const initialState: ListState<any> = {
-  items: [ 'a', 'b', 'c'],
+  items: [{
+    title: 'bread',
+    date: Date.now(),
+  }, {
+    title: 'sourdough',
+    date: Date.now(),
+  }],
 };
 
-export function listReducer<T>(state: ListState<T> = initialState, action: ListAction): ListState<any> {
+export function listReducer<T>(state: ListState<T> = initialState, action: ListAction): ListState<T> {
   switch (action.type) {
     case ADD_ITEM:
       state.items.push(action.item);
