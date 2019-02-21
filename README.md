@@ -1,5 +1,5 @@
 # Boule
-<img src='./assets/boule-icon-with-title.png' width='100'/>
+<img src='./assets/boule-icon-with-title.png' width=100/>
 
 A simple tracker for your baking progression. 
 
@@ -33,3 +33,25 @@ is built on top of [Expo](https://expo.io/) and
 You may find it useful to configure `tsc` to watch for changes and
 automatically recompile (`yarn tsc -w`), which nicely integrates with Expo's
 support for live reloading.
+
+## Screenshots
+These are mock ups of some of the views I will be working on for the
+application.
+<figure style='display:inline-table;margin:5px;width:150px;'>
+  <img src='./assets/launch-view.png' style='display:table-row'/>
+  <figcaption style='display:table-caption;caption-side:bottom;text-align:center'>
+    Launch View
+  </figcaption>
+</figure>
+<figure style='display:inline-table;margin:5px;width:150px;'>
+  <img src='./assets/timeline-view.png' style='display:table-row'/>
+  <figcaption style='display:table-caption;caption-side:bottom;text-align:center'>
+    Timeline View
+  </figcaption>
+</figure>
+<figure style='display:inline-table;margin:5px;width:150px;'>
+  <img src='./assets/recipe-view.png' style='display:table-row'/>
+  <figcaption style='display:table-caption;caption-side:bottom;text-align:center'>
+    Recipe View
+  </figcaption>
+</figure>
