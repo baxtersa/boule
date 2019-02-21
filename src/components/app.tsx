@@ -1,12 +1,11 @@
 const React = require('react');
 import { Component } from 'react'
-import { Container, Header, Content, Body, StyleProvider } from 'native-base';
+import { Container, Header, Content, StyleProvider } from 'native-base';
 
-import ListContainer from '../containers/listContainer';
-import AddItemContainer from '../containers/addItemContainer';
+import ContentContainer from '../containers/contentContainer';
 import getTheme from '../../native-base-theme/components';
 import commonColor from '../../native-base-theme/variables/commonColor';
-import HeaderView from './headerView';
+import HeaderContainer from '../containers/headerContainer';
 
 export default class App extends Component {
   render() {
@@ -14,13 +13,10 @@ export default class App extends Component {
       <StyleProvider style={getTheme(commonColor)}>
         <Container>
           <Header hasSegment>
-            <Body>
-              <HeaderView />
-            </Body>
+            <HeaderContainer />
           </Header>
           <Content padder scrollEnabled={false}>
-            <AddItemContainer />
-            <ListContainer />
+            <ContentContainer />
           </Content>
         </Container>
       </StyleProvider>
