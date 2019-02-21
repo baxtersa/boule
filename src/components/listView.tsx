@@ -6,9 +6,10 @@ import { List, Button, Icon } from 'native-base';
 import ListItemView from './listItemView';
 import { ListState } from '../reducers/listReducers';
 import { BreadInfo } from '../types/breadInfo';
+import { DeleteItem } from '../actions/index';
 
 export interface Props {
-  onItemClicked: (index: number) => void;
+  onItemClicked: (index: number) => DeleteItem;
   list: ListState<BreadInfo>;
 };
 
@@ -42,6 +43,11 @@ export default class ListView extends Component<Props> {
         rightOpenValue={-75}
         renderRightHiddenRow={(_, secId, rowId, rowMap) =>
           <Button
+            style={{
+              borderTopRightRadius: 8,
+              borderBottomRightRadius: 8,
+              marginVertical: 8,
+            }}
             full
             danger
             onPress={_ => {

@@ -9,7 +9,9 @@ interface Props {
 
 const style = StyleSheet.create({
   item: {
-    backgroundColor: 'transparent',
+    backgroundColor: '#7cae7a',
+    borderRadius: 8,
+    marginVertical: 8,
   },
   text: {
     paddingLeft: 10,

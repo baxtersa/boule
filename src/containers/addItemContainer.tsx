@@ -1,8 +1,8 @@
 const React = require('react');
 import { Component } from "react";
 import { connect } from "react-redux";
-import { TextInput, StyleSheet } from "react-native";
-import { Button, Text, View } from 'native-base';
+import { StyleSheet } from "react-native";
+import { Button, View, Icon, Item, Input } from 'native-base';
 import { addItem, AddItem } from "../actions";
 import { BreadInfo } from "../types/breadInfo";
 
@@ -17,13 +17,18 @@ const defaultState = { text: '' };
 
 const style = StyleSheet.create({
     addItem: {
-        width: '90%',
+        height: 35,
+        width: 35,
+        marginLeft: 30,
         alignSelf: 'center',
         justifyContent: 'center',
     },
     textInput: {
-        padding: 10,
+        flex: 1,
+        height: 35,
         justifyContent: 'center',
+        backgroundColor: '#ebebeb',
+        borderRadius: 8,
     }
 });
 
@@ -39,16 +44,20 @@ class AddItemView extends Component<Props, State> {
         return (
             <View style={{
                 display: 'flex',
-                flexDirection: 'column',
+                flexDirection: 'row',
                 alignItems: 'center',
-                justifyContent: 'center',
+                justifyContent: 'space-between',
             }}>
-                <TextInput
+                <Item
                     style={style.textInput}
-                    clearButtonMode={'while-editing'}
-                    clearTextOnFocus={true}
-                    onSubmitEditing={ev =>
-                        this.setState({ text: ev.nativeEvent.text })} />
+                    rounded>
+                    <Input
+                        style={style.textInput}
+                        clearButtonMode='always'
+                        clearTextOnFocus={true}
+                        onEndEditing={ev =>
+                            this.setState({ text: ev.nativeEvent.text })} />
+                </Item>
                 <Button
                     style={style.addItem}
                     onPress={event => {
@@ -64,7 +73,7 @@ class AddItemView extends Component<Props, State> {
                         // reset the text entry to default
                         this.setState(defaultState);
                     }}>
-                    <Text>Add Item</Text>
+                    <Icon active name='plus'/>
                 </Button >
             </View>
         )

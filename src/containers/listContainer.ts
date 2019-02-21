@@ -8,7 +8,7 @@ const ListContainer = connect(
   (state: { list: ListState<BreadInfo> }) => state,
   dispatch => ({
     onItemClicked: (index: number) => {
-      dispatch(deleteItem(index));
+      return dispatch(deleteItem(index));
     }
   }))(ListView);
 
