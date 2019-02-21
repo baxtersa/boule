@@ -149,7 +149,7 @@ export default {
 
   // Header
   toolbarBtnColor: platform === "ios" ? "#007aff" : "#fff",
-  toolbarDefaultBg: platform === "ios" ? "#F8F8F8" : "#3F51B5",
+  toolbarDefaultBg: platform === "ios" ? "#ebebeb" : "#3F51B5",
   toolbarHeight: platform === "ios" ? 64 : 56,
   toolbarSearchIconSize: platform === "ios" ? 20 : 23,
   toolbarInputColor: platform === "ios" ? "#CECDD2" : "#fff",
@@ -170,15 +170,16 @@ export default {
   },
 
   // Icon
-  iconFamily: "Ionicons",
-  iconFontSize: platform === "ios" ? 30 : 28,
+  iconFamily: "Entypo",
+  iconFontSize: platform === "ios" ? 48 : 28,
   iconHeaderSize: platform === "ios" ? 33 : 24,
 
   // InputGroup
   inputFontSize: 17,
-  inputBorderColor: "#D9D5DC",
-  inputSuccessBorderColor: "#2b8339",
-  inputErrorBorderColor: "#ed2f2f",
+  inputBgColor: "#ebebeb",
+  inputBorderColor: "#ebebeb",
+  inputSuccessBorderColor: "#ebebeb",
+  inputErrorBorderColor: "#ebebeb",
   inputHeightBase: 50,
   get inputColor() {
     return this.textColor;
@@ -217,11 +218,11 @@ export default {
   },
 
   // Segment
-  segmentBackgroundColor: platform === "ios" ? "#F8F8F8" : "#3F51B5",
-  segmentActiveBackgroundColor: platform === "ios" ? "#007aff" : "#fff",
-  segmentTextColor: platform === "ios" ? "#007aff" : "#fff",
-  segmentActiveTextColor: platform === "ios" ? "#fff" : "#3F51B5",
-  segmentBorderColor: platform === "ios" ? "#007aff" : "#fff",
+  segmentBackgroundColor: platform === "ios" ? "#ebebeb" : "#3F51B5",
+  segmentActiveBackgroundColor: platform === "ios" ? "#7cae7a" : "#fff",
+  segmentTextColor: platform === "ios" ? "#394053" : "#fff",
+  segmentActiveTextColor: platform === "ios" ? "#394053" : "#3F51B5",
+  segmentBorderColor: platform === "ios" ? "#7cae7a" : "#fff",
   segmentBorderColorMain: platform === "ios" ? "#a7a6ab" : "#3F51B5",
 
   // Spinner
@@ -240,8 +241,8 @@ export default {
   tabFontSize: 15,
 
   // Text
-  textColor: "#000",
-  inverseTextColor: "#fff",
+  textColor: "#394053",
+  inverseTextColor: "#ebebeb",
   noteFontSize: 14,
   get defaultTextColor() {
     return this.textColor;
@@ -257,7 +258,7 @@ export default {
   // Other
   borderRadiusBase: platform === "ios" ? 5 : 2,
   borderWidth: 1 / PixelRatio.getPixelSizeForLayoutSize(1),
-  contentPadding: 10,
+  contentPadding: 25,
   dropdownLinkColor: "#414142",
   inputLineHeight: 24,
   deviceWidth,

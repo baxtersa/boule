@@ -230,7 +230,7 @@ export default (variables /*: * */ = variable) => {
     borderRightWidth: 0,
     borderLeftWidth: 0,
     borderColor: variables.inputBorderColor,
-    backgroundColor: "transparent",
+    backgroundColor: variables.inputBgColor,
     flexDirection: "row",
     alignItems: "center",
     marginLeft: 2

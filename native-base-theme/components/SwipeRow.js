@@ -42,7 +42,7 @@ export default (variables /*: * */ = variable) => {
       alignSelf: "stretch",
       borderRadius: 0,
     },
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   };
 
   return swipeRowTheme;
