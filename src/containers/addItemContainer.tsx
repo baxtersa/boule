@@ -60,9 +60,7 @@ class AddItemView extends Component<Props, State> {
                 </Item>
                 <Button
                     style={style.addItem}
-                    onPress={event => {
-                        event.preventDefault();
-
+                    onPress={() => {
                         // don't add empty items to list
                         if (!text.trim()) {
                             return;

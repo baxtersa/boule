@@ -50,7 +50,7 @@ export default class ListView extends Component<Props> {
             }}
             full
             danger
-            onPress={_ => {
+            onPress={() => {
               onItemClicked(rowId as number);
               rowMap[`${secId}${rowId}`].props.closeRow();
             }}>
